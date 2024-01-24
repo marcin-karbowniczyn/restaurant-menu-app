@@ -15,7 +15,7 @@ MEAL_TYPE = (
 
 STATUS = (
     (0, 'Unavailable'),
-    (1, 'Available')
+    (1, 'Available'),
 )
 
 
@@ -25,7 +25,7 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     meal_type = models.CharField(max_length=200, choices=MEAL_TYPE)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
-    status = models.ImageField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=0)
     date_created = models.DateTimeField(auto_now_add=True)  # auto_now_add -> Automatically set the field to now when the object is first created.
     date_updated = models.DateTimeField(auto_now=True)  # auto_now -> Automatically set the field to now every time the object is saved.
 

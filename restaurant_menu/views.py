@@ -14,6 +14,10 @@ class MenuListView(generic.ListView):
     queryset = Item.objects.order_by("date_created")
     template_name = 'index.html'
 
+    # AFAIU context are variables we want to display on the view, like render(req, template, dict_context)
+    def get_context_data(self, *, object_list=queryset, **kwargs):
+        return dict(object_list)
+
 
 class MenuItemDetail(generic.DetailView):
     model = Item
