@@ -15,8 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from restaurant_menu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('restaurant_menu.urls')),
+    # Example of not using include, I simply hardcoded, that for this project, homepage will be views.MenuListView.as_view()
+    # If I had path('whatever', include('restaurant_menu.urls')), urls from app restaurant menu would look like localhost/whatever/about itd
+    # This would be ok if I had one app.
+    # path('', views.MenuListView.as_view(), name='home')
+
 ]
