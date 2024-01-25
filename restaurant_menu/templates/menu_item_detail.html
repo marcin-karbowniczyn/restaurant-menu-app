@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
     <h1>{{ item.meal }}</h1>
-    <p> {{ item.description }}</p>
-    <p> {{ item.price }}</p>
-</body>
-</html>
+    <p><b>Ingredients:</b> {{ item.description }}</p>
+    <p><b>Price:</b> {{ item.price }} $</p>
+</div>
+{% endblock content %}
+
+
