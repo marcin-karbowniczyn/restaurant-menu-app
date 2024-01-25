@@ -10,7 +10,7 @@ from .models import Item, MEAL_TYPE
 
 
 class MenuListView(generic.ListView):
-    # queryset wil store the list of data to display. We are basically querying the data from database table
+    # queryset wil store the list of data to display. We are basically querying the data from database table. All the objects from DB we want to display
     queryset = Item.objects.order_by("date_created")
     template_name = 'index.html'
 
@@ -20,13 +20,11 @@ class MenuListView(generic.ListView):
         context['meal_types'] = MEAL_TYPE
         return context
 
-    # def get_context_data(self, *, object_list=queryset, **kwargs):
-    #     context = dict()
-    #     context['meal_types'] = MEAL_TYPE
-    #     context['item_list'] = object_list
-    #     return context
-
 
 class MenuItemDetail(generic.DetailView):
     model = Item
     template_name = 'menu_item_detail.html'
+
+
+class AboutView(generic.TemplateView):
+    template_name = 'about.html'
