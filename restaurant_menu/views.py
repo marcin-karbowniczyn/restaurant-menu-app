@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Item
+from .models import Item, MEAL_TYPE
 
 
 # To retrieve objects from your database, construct a QuerySet via a Manager on your model class.
@@ -15,8 +15,16 @@ class MenuListView(generic.ListView):
     template_name = 'index.html'
 
     # AFAIU context are variables we want to display on the view, like render(req, template, dict_context)
-    def get_context_data(self, *, object_list=queryset, **kwargs):
-        return dict(object_list)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meal_types'] = MEAL_TYPE
+        return context
+
+    # def get_context_data(self, *, object_list=queryset, **kwargs):
+    #     context = dict()
+    #     context['meal_types'] = MEAL_TYPE
+    #     context['item_list'] = object_list
+    #     return context
 
 
 class MenuItemDetail(generic.DetailView):
