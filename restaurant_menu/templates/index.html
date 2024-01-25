@@ -12,13 +12,15 @@
     {% if meal.meal_type == meal_type.0 %}
     
     {% if not meal.status %}
-    <h3>
-        <del>{{ meal.meal }}</del>
-    </h3>
+    <a href="{% url 'menu_item' meal.pk %}">
+        <h3>
+            <del>{{ meal.meal }}</del>
+        </h3>
+    </a>
     <p>{{ meal.description }}</p>
     
     {% else %}
-    <h3>{{ meal.meal }}</h3>
+    <a href="{% url 'menu_item' meal.pk %}"><h3>{{ meal.meal }}</h3></a>
     <p>{{ meal.description }}</p>
     
     {% endif %}
