@@ -2,3 +2,4 @@
 /venv
 .env
 qr.png
+db.sqlite3
